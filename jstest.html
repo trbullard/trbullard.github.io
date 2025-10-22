@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <title>
+            Play my game.
+        </title>
+    </head>
+    <style>
+       * { color: white;
+            margin: 0px;
+            padding: 0px;
+            inset: 0px;
+            background-image: url("./download.gif");
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-color: black;
+        }
+    </style>
+    <body>
+
+        <script>
+            function ask(message, hint ="I dont think that is possible, Try Again."){
+                let response = prompt(message)?.trim();
+                if (!response) {
+                    alert(hint);
+                    return ask(message);
+                }
+                return response;
+            }
+
+            let falsename    = "2011x"
+            let falsestname  = "2011X"
+            let fbigbeefname = "big beef"
+            let Xname        = "X"
+            let rightanswer  = "yes"
+            let wronganswer  = "no"
+            let leftanswer = "left"
+            let wrightanswer = "right"
+            
+            let name = ask("What is your name?")
+
+            if (name === falsename) {
+                alert("You can not be a GOD.")
+                alert("You are then ripped apart brutally by 2011x, the god of this realm")
+            } else if  (name == falsestname) {
+                alert("You can not be a GOD.")
+                alert("You are then ripped apart brutally by 2011x, the god of this realm")
+            } else if (name == fbigbeefname) {
+                alert("You can not be a GOD.")
+                alert("You are then ripped apart brutally by 2011x, the god of this realm")
+            } else if(name == Xname) {
+                alert("You can not be a GOD.")
+                alert("You are then ripped apart brutally by 2011x, the god of this realm")
+            } else {
+
+                let age = ask("How old are you, poor soul?")
+
+                while (age < 10 || age > 100) {
+                    if (age < 10 ) age = ask("That is much too young, Tell the truth poor soul");
+                    if (age > 100) age = ask("That is much too elderly, Tell the truth poor soul")
+                }
+            
+                alert("Do you know who i am, " + name + "?")
+                alert("I AM GOD.")
+
+                let answer = ask("dO YoU WaNt To PlAy wItH mE? (yes or no in lowercase)")
+            
+                if (answer === rightanswer) {
+                    alert("A sImPlE GaMe oF hIdE aNd SeEk.")
+                    alert("iLl cLoSe My eYeS aNd CoUnT tO tHrEe.")
+                    alert("keep this interesting for me~")
+                    alert("you then take off, sprinting at the maximum your legs can take you.")
+                   let direction =ask("you keep running until.. youre at a crossroads. Where do you want to go, " + name+ "? left or right?") 
+                    if (direction=== leftanswer) {alert("you take a sharp left, and 2011x BARRELS into a boulder, and you escape alive... or so you thought")
+                        alert("i guess there wasnt a way out in mind for you. at least in his world. He finds you, and puts your head on a pike.")
+                           } else if (direction === wrightanswer) 
+                            {alert("you take a right turn, only to find 2011x waiting for you! you swing in self defense, however he only poofs behind you and pushes you over. and before you can turn around and get up again, he reaches into your chest and rips your heart out.")}
+                } else if (answer === wronganswer) {
+                    alert("You arent interesting. its a shame, you mightve gone free if you tried to play my game.")
+                    alert("you were then brutalized by 2011x, the god of this realm")
+                }                
+            }
+            
+            
+            </script>
+        <h1> GAME OVER.</h1>
+    </body>
+</html>
