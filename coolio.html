@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello Algorithms</title>
+  </head>
+  <body>
+    <script>
+      // compute the standard deviation of the following numbers
+      let numbers = [
+        86, 45, 12, 44, 2,
+        43, 55, 29, 67, 81
+      ]
+      let n = numbers.length
+      let sum = numbers.reduce((addedTogether, currentSum) => {
+  return addedTogether+ currentSum;
+}, 0);
+
+      
+
+     let average = sum / n
+     console.log(sum)
+     console.log("Divided by")
+     console.log(n)
+     console.log("Equals")
+     console.log(average)
+    </script>
+  </body>
+</html>
