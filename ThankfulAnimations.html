@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello DOM</title>
+  </head>
+  <body>
+
+    <div id="turkey">🦃</div>
+
+
+    <script>
+      const turkey = document.getElementById("turkey")
+      turkey.style.position = "absolute"
+      turkey.style.top      = "50%"
+      turkey.style.left     = "0px"
+      turkey.style.fontSize = "100px"
+
+      document.addEventListener("keydown", onKeyDown)
+      document.addEventListener("keyup"  , onKeyUp  )
+
+      let x  = 0
+      let y  = 0
+
+      let keys = { }
+
+      function onKeyDown(ke) {
+        keys[ke.key] = true
+      }
+
+      function onKeyUp(ke) {
+        keys[ke.key] = false
+      }
+
+      function isKeyDown(key) {
+        return keys[key] ?? false
+      }
+
+      function isKeyUp(key) {
+        return !(keys[key] ?? false)
+      }
+
+      function update(t, dt) {
+        if (isKeyDown("w"))
+          y = y - 3000 * dt
+
+        if (isKeyDown("s"))
+          y = y + 300 * dt
+
+        if (isKeyDown("a"))
+          x = x - 300 * dt
+
+        if (isKeyDown("d"))
+          x = x + 300 * dt
+      }
+
+      function render(t, dt) {
+        turkey.style.left = x + "px"
+        turkey.style.top  = y + "px"
+      }
+
+      function animate(t0, t1, t2) {
+        const t  = (t2 - t0) / 1000
+        const dt = (t2 - t1) / 1000
+        update(t, dt)
+        render(t, dt)
+        
+        requestAnimationFrame(t3 => animate(t0, t2, t3))
+      }
+
+      requestAnimationFrame(
+        t0 => requestAnimationFrame(
+          t1 => requestAnimationFrame(
+            t2 => animate(t0, t1, t2))))
+
+    </script>
+  </body>
+</html>
