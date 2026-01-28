@@ -82,6 +82,80 @@
     </div>
 
     <script>
+    
+  let currentInput = "0";
+  let previousInput = "";
+  let operator = null;
+  let shouldResetScreen = false;
+
+    // Unified handler for all button clicks
+    document.getElementById("calculator").addEventListener("click", (e) => {
+    const target = e.target;
+    if (target.tagName !== "BUTTON") return;
+
+    const value = target.innerText;
+    const id = target.id;
+
+    if (!isNaN(value)) handleNumber(value);
+    else if (id === "add" || id === "sub") handleOperator(value);
+    else if (id === "dot") handleDecimal();
+    else if (id === "c") reset();
+    else if (id === "go") calculate();
+    });
+
+    function handleNumber(num) {
+    if (currentInput === "0" || shouldResetScreen) {
+    currentInput = num;
+    shouldResetScreen = false;
+    } else {
+    currentInput += num;
+    }
+    updateDisplay();
+  }
+
+  function handleOperator(op) {
+    if (operator !== null) calculate();
+    previousInput = currentInput;
+    operator = op;
+    shouldResetScreen = true;
+  }
+
+  function calculate() {
+    if (operator === null || shouldResetScreen) return;
+  
+    const a = parseFloat(previousInput);
+    const b = parseFloat(currentInput);
+    let result = 0;
+
+    if (operator === "+") result = a + b;
+    else if (operator === "-") result = a - b;
+
+    currentInput = result.toString();
+    operator = null;
+    updateDisplay();  
+  }
+
+  function handleDecimal() {
+    if (shouldResetScreen) {
+    currentInput = "0.";
+    shouldResetScreen = false;
+    } else if (!currentInput.includes(".")) {
+    currentInput += ".";
+    }
+    updateDisplay();
+  }
+
+  function reset() {
+    currentInput = "0";
+    previousInput = "";
+    operator = null;
+    updateDisplay();
+  }
+
+  function updateDisplay() {
+  display.innerText = currentInput;
+  }
+      
       const display = document.getElementById("display")
       
       const _0 = document.getElementById("0")
@@ -102,6 +176,7 @@
       const c   = document.getElementById("c"  )
 
 
+      // This code is 90% human made, i used AI to help me understand and correct the code that wasnt working, as i struggled making it work
     </script>
   </body>
 </html> 
