@@ -103,6 +103,8 @@
     else if (id === "go") calculate();
     });
 
+    // === means  (at least in luau) that it should equal to that id, but in java, it disabled the coersion
+
     function handleNumber(num) {
     if (currentInput === "0" || shouldResetScreen) {
     currentInput = num;
@@ -123,6 +125,9 @@
   function calculate() {
     if (operator === null || shouldResetScreen) return;
   
+
+    // || is an or operator
+    
     const a = parseFloat(previousInput);
     const b = parseFloat(currentInput);
     let result = 0;
@@ -176,7 +181,7 @@
       const c   = document.getElementById("c"  )
 
 
-      // This code is 90% human made, i used AI to help me understand and correct the code that wasnt working, as i struggled making it work
+     
     </script>
   </body>
 </html> 
